@@ -17,6 +17,7 @@ java {
 }
 
 repositories {
+  mavenCentral()
   maven("https://maven.pkg.github.com/Knerio/Simple-Chals-Server") {
     credentials {
       username = project.properties["GITHUB_USERNAME"].toString()
