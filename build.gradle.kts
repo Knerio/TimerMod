@@ -10,7 +10,7 @@ plugins {
 
 group = "de.derioo.chals.timer"
 version = "0.0.0"
-description = "A Timer Mod"
+description = "Dies ist eine TimerMod, diese Mod nutzt den Befehl <green>'/timer start | stop | reset'</green> und ist standarmäßig aktiviert"
 
 java {
   toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -74,7 +74,7 @@ publishing {
     register<MavenPublication>("gpr") {
       groupId = "de.derioo.mods"
       artifactId = "timer"
-      version = "0.1.1"
+      version = "0.1.5"
       from(components["java"])
       artifact("build/libs/Timer.jar")
     }
