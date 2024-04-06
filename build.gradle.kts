@@ -53,7 +53,7 @@ tasks {
   }
 
   publish {
-    mustRunAfter("reobfJar")
+    dependsOn("reobfJar")
   }
 
 }
@@ -74,7 +74,7 @@ publishing {
     register<MavenPublication>("gpr") {
       groupId = "de.derioo.mods"
       artifactId = "ampel"
-      version = "0.0.0"
+      version = "0.0.1"
       from(components["java"])
       artifact("build/libs/Timer.jar")
     }

@@ -1,4 +1,4 @@
-package de.derioo.chals.timer;
+package de.derioo.chals.ampel;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -24,7 +24,7 @@ public final class Ampel extends JavaPlugin implements Listener {
     ampel = new AmpelObject();
   }
 
-  class AmpelObject {
+  static class AmpelObject {
     private Color color;
     private final Random random = new Random();
     private long nextYellowSwitch;
@@ -35,13 +35,14 @@ public final class Ampel extends JavaPlugin implements Listener {
       nextYellowSwitch = TimeUnit.SECONDS.toMillis(random.nextInt(3) + 2);
 
 
-      Bukkit.getScheduler().runTaskTimer(getPlugin(Ampel.class), () -> {
+      Ampel plugin = getPlugin(Ampel.class);
+      Bukkit.getScheduler().runTaskTimer(plugin, () -> {
         if (color == Color.YELLOW || color == Color.RED) return;
         if (lastSwitch - nextYellowSwitch < System.currentTimeMillis()) {
           color = Color.YELLOW;
-          Bukkit.getScheduler().runTaskLater(getPlugin(Ampel.class), () -> {
+          Bukkit.getScheduler().runTaskLater(plugin, () -> {
             color = Color.RED;
-            Bukkit.getScheduler().runTaskLater(getPlugin(Ampel.class), () -> {
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
               color = Color.GREEN;
               nextYellowSwitch = TimeUnit.SECONDS.toMillis(random.nextInt(3) + 2);
               lastSwitch = System.currentTimeMillis();
