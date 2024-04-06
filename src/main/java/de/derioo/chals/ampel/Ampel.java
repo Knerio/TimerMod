@@ -45,7 +45,7 @@ public final class Ampel extends JavaPlugin implements Listener {
               color = Color.GREEN;
               nextYellowSwitch = TimeUnit.SECONDS.toMillis(random.nextInt(3) + 2);
               lastSwitch = System.currentTimeMillis();
-            }, random.nextInt(20) + 30);
+            }, random.nextInt(20 * 4) + 20 * 3);
           }, random.nextInt(20) + 30);
         }
 
